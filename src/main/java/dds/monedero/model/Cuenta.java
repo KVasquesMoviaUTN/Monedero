@@ -74,6 +74,10 @@ public class Cuenta {
     return movimientos;
   }
 
+  public long getMovimientosDelDia() {
+    return getMovimientos().stream().filter(movimiento -> movimiento.fueDepositado(LocalDate.now())).count();
+  }
+
   public double getSaldo() {
     return saldo;
   }
