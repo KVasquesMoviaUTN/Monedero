@@ -56,8 +56,7 @@ public class Cuenta {
     }
   }
 
-  public void agregarMovimiento(LocalDate fecha, double cuanto, boolean esDeposito) {
-    Movimiento movimiento = new Movimiento(fecha, cuanto, esDeposito);
+  public void agregarMovimiento(Movimiento movimiento) {//Long Parameter List
     movimientos.add(movimiento);
   }
 
@@ -83,9 +82,4 @@ public class Cuenta {
   public void setSaldo(double saldo) {
     this.saldo = saldo;
   }
-
-  public boolean isMontoNegativo(double cuanto) {
-    return cuanto < 0;
-  }
-
 }

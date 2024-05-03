@@ -46,14 +46,12 @@ public class Movimiento {
 
   public void agregateA(Cuenta cuenta) {
     cuenta.setSaldo(calcularValor(cuenta));
-    cuenta.agregarMovimiento(fecha, monto, esDeposito);
+    cuenta.agregarMovimiento(this);
   }
 
-  public double calcularValor(Cuenta cuenta) {
-    if (esDeposito) {
+  public double calcularValor(Cuenta cuenta) {//Tal vez las llaves agregan legibilidad pero extienden el método
+    if (esDeposito)
       return cuenta.getSaldo() + getMonto();
-    } else {
-      return cuenta.getSaldo() - getMonto();
-    }
+    return cuenta.getSaldo() - getMonto();
   }
 }
