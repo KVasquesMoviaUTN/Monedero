@@ -49,7 +49,7 @@ public class Cuenta {
     new Movimiento(LocalDate.now(), cuanto, false).agregateA(this);
   }
 
-  public boolean esNegativo(double cuanto){//Para arreglar large method
+  public void esNegativo(double cuanto){//Para arreglar large method
     if (cuanto <= 0) {
       throw new MontoNegativoException(cuanto + ": el monto a ingresar debe ser un valor positivo");
     }
