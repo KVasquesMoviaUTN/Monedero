@@ -27,9 +27,7 @@ public class Cuenta {
   }
 
   public void poner(double cuanto) {
-    if (isMontoNegativo(cuanto)) {//Duplicated code
-      throw new MontoNegativoException(cuanto + ": el monto a ingresar debe ser un valor positivo");
-    }
+    esNegativo(cuanto);//Duplicated code
 
     if (getMovimientosDelDia() >= 3) {//Message chains
       throw new MaximaCantidadDepositosException("Ya excedio los " + 3 + " depositos diarios");
