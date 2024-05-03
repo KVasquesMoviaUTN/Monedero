@@ -27,7 +27,7 @@ public class Cuenta {
   }
 
   public void poner(double cuanto) {
-    if (cuanto <= 0) {
+    if (isMontoNegativo(cuanto)) {//Duplicated code
       throw new MontoNegativoException(cuanto + ": el monto a ingresar debe ser un valor positivo");
     }
 
@@ -80,6 +80,10 @@ public class Cuenta {
 
   public void setSaldo(double saldo) {
     this.saldo = saldo;
+  }
+
+  public boolean isMontoNegativo(double cuanto) {
+    return cuanto < 0;
   }
 
 }
