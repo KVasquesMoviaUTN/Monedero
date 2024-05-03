@@ -45,7 +45,7 @@ public class Cuenta {
     if (getSaldo() - cuanto < 0) {
       throw new SaldoMenorException("No puede sacar mas de " + getSaldo() + " $");
     }
-    double montoExtraidoHoy = getMontoExtraidoA(LocalDate.now());
+    double montoExtraidoHoy = getMontoExtraidoA();
     double limite = 1000 - montoExtraidoHoy;
     if (cuanto > limite) {
       throw new MaximoExtraccionDiarioException("No puede extraer mas de $ " + 1000
@@ -59,9 +59,9 @@ public class Cuenta {
     movimientos.add(movimiento);
   }
 
-  public double getMontoExtraidoA(LocalDate fecha) {
+  public double getMontoExtraidoA() {//Feature Envy
     return getMovimientos().stream()
-        .filter(movimiento -> !movimiento.isDeposito() && movimiento.getFecha().equals(fecha))
+        .filter(movimiento -> !movimiento.isDeposito() && movimiento.getFecha().equals(LocalDate.now()))
         .mapToDouble(Movimiento::getMonto)
         .sum();
   }
